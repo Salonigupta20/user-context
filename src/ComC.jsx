@@ -9,16 +9,21 @@ const ComC = () => {
    
     const InputEvent= (event)=>{
         console.log(event.target.value);
-        fnameContext.setFname(event.target.value);
+        // fnameContext.setFname(event.target.value);
+        const action = {
+            type: 'SET_NAME',
+            payload: event.target.value
+        }
+        fnameContext.dispatch(action)
     }
     return(
         <>
-        <h1>Hello this is {fname} {lname} {fnameContext.fname}</h1>
+        <h1>Hello this is {fname} {lname} {fnameContext.state.name}</h1>
         <input 
         type="text"
         placeholder="Enter your name"
         onChange={InputEvent}
-        value={fnameContext.fname}
+        value={fnameContext.state.name}
         />
         <button onClick={InputEvent}>click me</button>
     </>
